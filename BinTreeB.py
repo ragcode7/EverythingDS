@@ -210,3 +210,34 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+"""
+Sample Input:
+0 1 2 3 4 5 6 7 8
+12
+IN
+PR
+PO
+D 4
+H 3
+L
+CC 4 7
+CC 4 8
+FB
+CB
+PR
+CM
+Sample Output:
+8 4 2 5 1 6 3 7 
+1 2 4 8 5 3 6 7 
+8 4 5 2 6 7 3 1 
+2
+1
+1 2 3 4 5 6 7 8 
+True
+False
+False
+True
+1 2 4 8 5 3 6 7 
+1 3 7 6 2 5 4 8
+"""
