@@ -1,3 +1,11 @@
+#Implement Queue Data structures using Linked List
+"""
+        E <element>       Enqueue operation
+        D                 Dequeue operation
+        I                 Checks if queue is empty or not
+        S                 Number of elements in the queue
+        F                 Returns front element in Queue.
+"""
 class Node:
     def __init__(self, data=None, next=None):
         self.data = data
@@ -82,3 +90,28 @@ def main():
 
 if __name__ == '__main__':
         main()
+"""
+Sample Input:
+8
+E 10
+E 20
+E 30
+S
+D
+F
+D
+D
+
+Sample Output:
+10 
+10 20
+10 20 30 
+    3
+    10
+20 30
+20
+    20
+    30
+    30
+    Queue Empty
+"""
