@@ -1,5 +1,20 @@
+#Binary Search Tree ADT
+"""
+  Pre: Preorder Traversal of the tree
+  In: Inorder Traversal of the tree
+  F k: Find if element k is present in the tree and prints True or False
+  I k: Inserts node with value k in the BST
+  D k: Deletes the node with value k in the BST
+  R low high: Prints all the elements in the BST that are in the range between low and high
+  M: returns the median element in the BST
+"""
+
 import math
 class BinarySearchTree:
+"""
+        This defines the node class. The children can be individually declared or stored
+        in a list. We are adding a pos value to help with visualization
+"""
     class node:
         def __init__(self):
             self.element = 0
@@ -7,11 +22,24 @@ class BinarySearchTree:
             self.rightchild = None
             self.pos = -1
             self.parent = None
+"""
+        This initializes the binary search tree. ht is the height of the tree, sz is the
+        number of nodes. You may define this appropriately.
+"""            
     def __init__(self):
         self.sz = 0
         self.root = None
         self.ht = 0
         self.mylist = []
+"""
+        This method implements the functionality of finding an element in the tree. The function
+        findElement(e) finds the node in the current tree, whose element is e. Depending on the
+        value of e and in relation to the current element visited, the algorithm visits the left
+        or the right child till the element is found, or an external node is visited. Your
+        algorithm can be iterative or recursive
+
+        Output: True if tree contains e or False if e not present in T
+"""        
     def findElement(self,e,curnode):
         while curnode != None:
             if curnode.element == e:
@@ -26,6 +54,12 @@ class BinarySearchTree:
                     return None
                 else:
                     curnode = curnode.leftchild
+"""
+        This method implements insertion of an element into the binary search tree. Using the
+        findElement(e) method find the position to insert, and insert a node with element e,
+        as left or right child accordingly
+        
+"""                 
     def insertElement(self,e):
         temp = self.root
         if temp == None:
@@ -52,6 +86,12 @@ class BinarySearchTree:
                     temp.rightchild.parent = temp
                     self.sz+=1
                     break
+"""
+        This method inorderTraverse(self,v) performs an inorder traversal of the BST, starting
+        from node v which is initially the root and prints the elements of the nodes as they
+        are visited. Remember the inorder traversal first visits the left child, followed by
+        the parent, followed by the right child. This could be used to print the tree.
+"""              
     def inorderTraverse(self, v):
         curnode = v
         if (curnode.leftchild != None):
@@ -59,10 +99,22 @@ class BinarySearchTree:
         print(curnode.element,end=",")
         if (curnode.rightchild!=None):
             self.inorderTraverse(curnode.rightchild)
+"""
+        Given a node v this will return the next element that should be visited after v in the
+        inorder traversal.
+"""         
     def returnNextInorder(self,v):
         while(v.leftchild!=None):
             v = v.leftchild
         return v
+"""
+        This method deleteElement(self, e), removes the node with element e from the tree T.
+        There are three cases:
+            1. Deleting a leaf or external node:Just remove the node
+            2. Deleting a node with one child: Remove the node and replace it with its child
+            3. Deleting a node with two children: Instead of deleting the node replace with
+                a) its inorder successor node or b)Inorder predecessor node
+"""    
     def deleteElement(self,e):
         nodetobedeleted = self.findElement(e,self.root)
         if(nodetobedeleted == None):
@@ -100,6 +152,9 @@ class BinarySearchTree:
                 x.rightchild = None
             self.sz-=1
         return
+"""
+        Given a list of elements construct a balanced binary search tree
+"""    
     def createTree(self, items):
         self.sz=len(items)
         mid = int(math.floor(len(items)/2))
@@ -112,6 +167,13 @@ class BinarySearchTree:
             if (len(items)==1):
                 self.insertElement(items[0])
             return
+"""
+        There are other support methods which maybe useful for implementing your functionalities.
+        These include
+            1. isExternal(self,v): which returns true if the node v is external
+            2. printTree(self): to visualize the tree for your debugging purposes. You may print it
+            using text formatting or use a turtle library given along with the file.
+"""     
     def isExternal(self,curnode):
         if (curnode.leftchild == None and curnode.rightchild == None):
             return True
@@ -232,3 +294,33 @@ def main():
 
 if __name__ == '__main__':
     main()
+"""
+Sample Input:
+ 1 3 4 6 7 8 9
+ 10
+ M
+ D 6
+ M
+ I 6
+ I 5
+ R 2 7
+ R 12 17
+ F 10
+ F 9
+ D 12
+ 
+Sample Output:
+ 6,3,1,4,8,7,9,
+ 6,3,1,4,8,7,9,
+ 6
+ 7,3,1,4,8,9,
+ 7,3,1,4,8,9,
+ 5.5
+ 7,3,1,4,6,8,9,
+ 7,3,1,4,6,5,8,9,
+ [3, 4, 5, 6, 7]
+ []
+ False
+ True
+ Error, element not found
+"""
