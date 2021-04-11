@@ -1,5 +1,20 @@
-#@start-editable@
+#BINARYYY TREEE ADT 
+"""
+  P: Preorder Traversal of the tree
+  I: Inorder Traversal of the tree
+  Post: Postorder Traversal of the tree
+  L: Levelorder traversal of the tree
+  D pos: Depth of node at position pos in the vector representation
+  H pos: Height of node at position pos in the vector representation
+  IP: IsProper which returns if the tree is a proper binary tree
+  M: Returns the mirror image of the tree and prints the level order
+  DL: Deletes the leaf nodes of the tree and prints the level order
+  RL: determine whether there exists a root-to-leaf path whose nodes sum is equal to k and returns True or False
+  ML: Returns the value of the leaf in the least cost path from the root, and if multiple paths are there returns the least of them.
+"""
 
+#ML AND RL DONT WORK IN THIS PROG
+#@start-editable@
 import math
 from collections import deque
 #@end-editable@
@@ -289,3 +304,39 @@ def main():
 
 if __name__ == '__main__':
     main()
+"""
+### **Sample Input:**
+
+ 8
+ -1 1 2 3 4 5 6 7
+ 12
+ P
+ I
+ Post
+ L
+ D 1
+ H 1
+ D 5
+ IP
+ RL
+ ML 5
+ M
+ DL
+
+
+### **Sample Output**
+
+ 1,2,4,5,3,6,7,
+ 4,2,5,1,6,3,7,
+ 4,5,2,6,7,3,1,
+ 1,2,3,4,5,6,7,
+ 0
+ 2
+ 2
+ True
+ False
+ 4
+ 1,3,2,7,6,5,4,
+ 1,3,2,
+
+"""
