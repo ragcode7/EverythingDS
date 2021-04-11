@@ -1,3 +1,11 @@
+#An update to good ol' heap 
+"""
+  I key: Insert key into the heap
+  R: Remove minimum key element from list
+  U: Update the key k1 with k2, and update to ensure the heap properties satisfy without fully rebuilding it. 
+  C: Check if given array of given size is a heap
+"""
+
 class BinHeap():
     def __init__(self):
         self.heapList = [0]
@@ -106,3 +114,27 @@ def main():
         
 if __name__ == '__main__':
     main()
+"""
+Sample Input:
+   5  
+   2 6 9 20 50
+   7
+   I 8
+   I 40
+   I 3
+   R
+   R
+   U 40 3
+   C 5
+   8 2 6 20 50
+   
+Sample Output:
+   [0, 2, 6, 8, 20, 50, 9]
+   [0, 2, 6, 8, 20, 50, 9, 40]
+   [0, 2, 3, 8, 6, 50, 9, 40, 20]
+   [0, 3, 6, 8, 20, 50, 9, 40]
+   [0, 6, 20, 8, 40, 50, 9]
+   [0, 3, 6, 8, 20, 50, 9]
+   False
+   
+"""
