@@ -1,3 +1,18 @@
+#BinHeap but PS
+"""
+Given n kingdoms of different military strength, combine them into a single kingdom. The rules for combining the kingdom are:
+
+1.At a time only 2 kingdoms can be combined.
+
+2.Two kingdoms with minimal strength always combine to form a single kingdom
+
+3.The military strength of combined kingdom is equal to sum of individual strength.
+
+Display the sequence in which they combine together with their combined strength. Implement this using appropriate data structure.
+
+"""
+
+#SCORED 13/15 
 class BinHeap():
     def __init__(self):
         self.heapList = [0]
@@ -111,3 +126,23 @@ def main():
 
 if __name__ == '__main__':
     main()
+"""
+Sample Input:
+	 4  
+   5 4 2 8
+   
+Sample Output:
+  [0, 2, 4, 5, 8]
+  [0, 4, 8, 5]
+  [0, 5, 8]
+  2 4 are combined to give 6
+  [0, 5, 8, 6]
+  [0, 6, 8]
+  [0, 8]
+  5 6 are combined to give 11
+  [0, 8, 11]
+  [0, 11]
+  [0]
+  8 11 are combined to give 19
+  [0, 19]
+"""
